@@ -96,11 +96,13 @@ export function BookingCancelAlert({ bookingId }) {
     const {data: tokenData} = await authClient.token()
 
     
-    const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+    // const res = await fetch(`http://localhost:5000/booking/${bookingId}`, {
+    // 54_8(4)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking/${bookingId}`, {
       method: "DELETE",
       headers: {
         "content-type": "application/json",
-        // (7) then (start: 54_7) 
+        // (7) then (start: 54_7) then go to server 
         authorization: `Bearer ${tokenData?.token}`
       }
     })

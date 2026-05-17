@@ -239,7 +239,9 @@ const handleBooking = async () => {
     console.log(tokenData)
     // (2)en then check
     //  api calling for booking
-    const res = await fetch('http://localhost:5000/booking', {
+    // const res = await fetch(`http://localhost:5000/booking`, {
+    // 54_8(5)${process.env.NEXT_PUBLIC_SERVER_URL}
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/booking`, {
         method: "POST",
         headers: {
             'content-type': 'application/json',

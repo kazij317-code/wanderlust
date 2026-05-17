@@ -9,7 +9,9 @@ import DestinationCard from '../components/DestinationCard';
     // (4)
 const DestinationPage = async () => {
 // (3)st API Calling for get/display
-const res = await fetch('http://localhost:5000/destination')
+// const res = await fetch('http://localhost:5000/destination')
+// 54_8(7)${process.env.NEXT_PUBLIC_SERVER_URL}
+const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination`)
 const destinations = await res.json()
 console.log(destinations);
 // (3)en ----------------------------

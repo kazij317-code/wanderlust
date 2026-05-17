@@ -400,8 +400,9 @@ const DestinationDetailsPage = async ({ params }) => {
     })
     // console.log(token)
     // (4)en
-    //API Calling for details display    
-    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+    //API Calling for details display 
+    // 54_8(8)${process.env.NEXT_PUBLIC_SERVER_URL}   
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
         headers: {
             // authorization: "logged in"
             // (6) then go to server     
