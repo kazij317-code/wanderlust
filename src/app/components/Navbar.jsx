@@ -121,7 +121,7 @@
 //     const user = session?.user
 //     console.log(user)
 //     // (7)en
-    
+
 //     return (
 
 //         // <nav className='flex justify-between bg-white p-5'>
@@ -172,14 +172,14 @@
 //                         <li>
 //                             <Avatar>
 //                                 <Avatar.Image alt="" src={user?.image} />
-                                
+
 //                                 <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
 //                             </Avatar>
 //                         </li>
 
 //                         <li>
 //                             <Button variant="danger" className={'rounded-none'}>Logout</Button>
-                            
+
 //                         </li>
 //                     </>
 
@@ -201,8 +201,100 @@
 // export default Navbar;
 
 // ---------------------End:53_3-(1) to () --------------------------------
-// -----------------------------Start: 53_4 ---------------------------------------
+// // -----------------------------Start: 53_4 ---------------------------------------
 
+// "use client"
+// import Image from 'next/image';
+// import Link from 'next/link';
+// import React from 'react';
+// import { authClient } from "@/lib/auth-client";
+// import { Avatar, Button } from '@heroui/react';
+
+// const Navbar = () => {
+//     // from better-auth documents
+//     const { data: session } = authClient.useSession();
+//     // console.log(session)
+//     const user = session?.user
+//     // console.log(user)
+
+//     // (1)st
+//     const handleSignOut = async () => {
+//         await authClient.signOut();
+//     }
+//     // (1)en
+//     return (
+
+
+//         <nav className='flex items-center justify-between bg-white p-5'>
+//             <ul className="flex gap-3">
+//                 <li>
+//                     <Link href={"/"}>Home</Link>
+//                 </li>
+//                 <li>
+//                     <Link href={"/destinations"}>Destinations</Link>
+//                 </li>
+//                 <li>
+//                     <Link href={"/my-bookings"}>My Bookings</Link>
+//                 </li>
+
+//                 <li>
+//                     <Link href={"/add-destination"}>Add Destination</Link>
+//                 </li>
+
+//             </ul>
+//             <div>
+
+//                 <Image
+//                     src={'/assets/Wanderlast.png'}
+//                     height={150}
+//                     width={150}
+//                     alt="logo"
+//                 />
+//             </div>
+
+//             <ul className="flex items-center gap-3">
+
+//                 <li>
+//                     <Link href={"/profile"}>Profile</Link>
+//                 </li>
+
+//                 {user ?
+//                     <>
+//                         <li>
+//                             <Avatar>
+//                                 {/* <Avatar.Image alt="" src={user?.image} /> */}
+//                                 {/* (8) then in login page */}
+//                                 <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
+//                                 <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+//                             </Avatar>
+//                         </li>
+
+//                         <li>
+//                             {/* <Button variant="danger" className={'rounded-none'}>Logout</Button> */}
+//                             {/* (2) then check and create google client id and secret and go to .env file */}
+//                             <Button onClick= {handleSignOut} variant="danger" className={'rounded-none'}>Logout</Button>
+//                         </li>
+//                     </>
+
+//                     : <>
+//                         <li>
+//                             <Link href={"/login"}>Login</Link>
+//                         </li>
+//                         <li>
+//                             <Link href={"/signup"}>Sign Up</Link>
+//                         </li>
+//                     </>}
+
+//             </ul>
+//         </nav>
+
+//     );
+// };
+
+// export default Navbar;
+
+// // ---------------------End:53_4-(1) to () --------------------------------
+// -----------------------------Start: 54_9 ---------------------------------------
 "use client"
 import Image from 'next/image';
 import Link from 'next/link';
@@ -213,84 +305,83 @@ import { Avatar, Button } from '@heroui/react';
 const Navbar = () => {
     // from better-auth documents
     const { data: session } = authClient.useSession();
-    // console.log(session)
+
     const user = session?.user
-    // console.log(user)
-    
-    // (1)st
+
     const handleSignOut = async () => {
         await authClient.signOut();
     }
-    // (1)en
+
     return (
 
-        
-        <nav className='flex items-center justify-between bg-white p-5'>
-            <ul className="flex gap-3">
-                <li>
-                    <Link href={"/"}>Home</Link>
-                </li>
-                <li>
-                    <Link href={"/destinations"}>Destinations</Link>
-                </li>
-                <li>
-                    <Link href={"/my-bookings"}>My Bookings</Link>
-                </li>
+        // (1)st
+        <div className="bg-white py-3">
+            <nav className='flex items-center justify-between max-w-7xl max-auto'>
+                <ul className="flex gap-3">
+                    <li>
+                        <Link href={"/"}>Home</Link>
+                    </li>
+                    <li>
+                        <Link href={"/destinations"}>Destinations</Link>
+                    </li>
+                    <li>
+                        <Link href={"/my-bookings"}>My Bookings</Link>
+                    </li>
 
-                <li>
-                    <Link href={"/add-destination"}>Add Destination</Link>
-                </li>
+                    <li>
+                        <Link href={"/add-destination"}>Add Destination</Link>
+                    </li>
 
-            </ul>
-            <div>
+                </ul>
+                <div>
 
-                <Image
-                    src={'/assets/Wanderlast.png'}
-                    height={150}
-                    width={150}
-                    alt="logo"
-                />
-            </div>
-            
-            <ul className="flex items-center gap-3">
+                    <Image
+                        src={'/assets/Wanderlast.png'}
+                        height={150}
+                        width={150}
+                        alt="logo"
+                    />
+                </div>
 
-                <li>
-                    <Link href={"/profile"}>Profile</Link>
-                </li>
+                <ul className="flex items-center gap-3">
 
-                {user ?
-                    <>
-                        <li>
-                            <Avatar>
-                                {/* <Avatar.Image alt="" src={user?.image} /> */}
-                                {/* (8) then in login page */}
-                                <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
-                                <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
-                            </Avatar>
-                        </li>
+                    <li>
+                        <Link href={"/profile"}>Profile</Link>
+                    </li>
 
-                        <li>
-                            {/* <Button variant="danger" className={'rounded-none'}>Logout</Button> */}
-                            {/* (2) then check and create google client id and secret and go to .env file */}
-                            <Button onClick= {handleSignOut} variant="danger" className={'rounded-none'}>Logout</Button>
-                        </li>
-                    </>
+                    {user ?
+                        <>
+                            <li>
+                                <Avatar>
 
-                    : <>
-                        <li>
-                            <Link href={"/login"}>Login</Link>
-                        </li>
-                        <li>
-                            <Link href={"/signup"}>Sign Up</Link>
-                        </li>
-                    </>}
-                
-            </ul>
-        </nav>
+                                    <Avatar.Image referrerPolicy="no-referrer" alt="John Doe" src={user?.image} />
+                                    <Avatar.Fallback>{user.name.charAt(0)}</Avatar.Fallback>
+                                </Avatar>
+                            </li>
+
+                            <li>
+
+                                <Button size="sm" onClick={handleSignOut} variant="danger" className={'rounded-none'}>Logout</Button>
+                            </li>
+                        </>
+
+                        : <>
+                            <li>
+                                <Link href={"/login"}>Login</Link>
+                            </li>
+                            <li>
+                                <Link href={"/signup"}>Sign Up</Link>
+                            </li>
+                        </>}
+
+                </ul>
+            </nav>
+        </div>
+        // (1)en then go to [id] apge
 
     );
 };
 
 export default Navbar;
 
-// ---------------------End:53_4-(1) to () --------------------------------
+// ---------------------End:54_9-(1) to () --------------------------------

@@ -376,7 +376,90 @@
 // export default DestinationDetailsPage;
 
 // // ---------------------End:54_2-(1) to () --------------------------------
-// -----------------------------Start: 54_4 ---------------------------------------
+// // -----------------------------Start: 54_4 ---------------------------------------
+// import BookingCard from '@/app/components/BookingCard';
+// import { DeleteAlert } from '@/app/components/DeleteAlert';
+// import { EditModal } from '@/app/components/EditModal';
+// import { auth } from '@/lib/auth';
+// import { Button } from '@heroui/react';
+// import { headers } from 'next/headers';
+// import Image from 'next/image';
+// import React from 'react';
+// import { BiEdit } from 'react-icons/bi';
+// import { FaRegCalendar } from 'react-icons/fa';
+// import { FiExternalLink } from 'react-icons/fi';
+// import { LuMapPin } from 'react-icons/lu';
+
+// const DestinationDetailsPage = async ({ params }) => {
+//     const { id } = await params
+//     // (4)st
+//     // const token = await auth.api.getToken({
+//     // (5)
+//     const {token} = await auth.api.getToken({
+//         headers: await headers()
+//     })
+//     // console.log(token)
+//     // (4)en
+//     //API Calling for details display 
+//     // 54_8(8)${process.env.NEXT_PUBLIC_SERVER_URL}   
+//     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
+//         headers: {
+//             // authorization: "logged in"
+//             // (6) then go to server     
+//             authorization: `Bearer ${token}`      
+//         }
+//     });
+    
+//     const destination = await res.json()
+//     //-----------------------------------
+
+//     const { imageUrl, price, destinationName, duration, country, description } = destination;
+
+//     return (
+
+//         <div className="max-w-7xl mx-auto">
+
+//             <div className="flex items-center gap-3 justify-end mt-5 mb-3">
+//                 <EditModal destination={destination} />
+
+//                 <DeleteAlert destination={destination} />
+//             </div>
+
+//             <Image className="" alt={destinationName} src={imageUrl} height={600} width={600} />
+            
+//             <div className="flex justify-between">
+//                 <div className='p-2'>
+//                     <div className="flex items-center gap-1">
+//                         <LuMapPin /><span>{country}</span>
+//                     </div>
+//                     <div className="flex justify-between">
+//                         <div>
+//                             <div>
+//                                 <h2 className="text-xl font-bold">{destinationName}</h2>
+//                             </div>
+//                             <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
+//                             </div>
+//                         </div>
+                        
+//                     </div>
+
+//                     <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
+//                     <p>{description}</p>
+
+//                 </div>
+                
+//                 <BookingCard destination={destination} />
+//             </div>
+            
+
+//         </div>
+//     );
+// };
+
+// export default DestinationDetailsPage;
+
+// // ---------------------End:54_4-(1) to () --------------------------------
+// -----------------------------Start: 54_10 ---------------------------------------
 import BookingCard from '@/app/components/BookingCard';
 import { DeleteAlert } from '@/app/components/DeleteAlert';
 import { EditModal } from '@/app/components/EditModal';
@@ -392,20 +475,14 @@ import { LuMapPin } from 'react-icons/lu';
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params
-    // (4)st
-    // const token = await auth.api.getToken({
-    // (5)
+    
     const {token} = await auth.api.getToken({
         headers: await headers()
     })
-    // console.log(token)
-    // (4)en
-    //API Calling for details display 
-    // 54_8(8)${process.env.NEXT_PUBLIC_SERVER_URL}   
+       
     const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destination/${id}`, {
         headers: {
-            // authorization: "logged in"
-            // (6) then go to server     
+             
             authorization: `Bearer ${token}`      
         }
     });
@@ -427,7 +504,9 @@ const DestinationDetailsPage = async ({ params }) => {
 
             <Image className="" alt={destinationName} src={imageUrl} height={600} width={600} />
             
-            <div className="flex justify-between">
+            {/* <div className="flex justify-between"> */}
+            {/* (2) then create app/not-found.js  */} 
+            <div className="flex justify-between gap-10">
                 <div className='p-2'>
                     <div className="flex items-center gap-1">
                         <LuMapPin /><span>{country}</span>
@@ -444,7 +523,9 @@ const DestinationDetailsPage = async ({ params }) => {
                     </div>
 
                     <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
-                    <p>{description}</p>
+                    {/* <p>{description}</p> */}
+                    {/* (1) */}
+                    <p className="max-6xl">{description}</p>
 
                 </div>
                 
@@ -458,4 +539,4 @@ const DestinationDetailsPage = async ({ params }) => {
 
 export default DestinationDetailsPage;
 
-// ---------------------End:54_4-(1) to () --------------------------------
+// ---------------------End:54_10-(1) to () --------------------------------
