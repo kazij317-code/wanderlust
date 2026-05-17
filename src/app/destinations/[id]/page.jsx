@@ -209,11 +209,180 @@
 // export default DestinationDetailsPage;
 
 // // ---------------------End:52_7-(1) to () --------------------------------
-// -----------------------------Start: 53_5 ---------------------------------------
+// // -----------------------------Start: 53_5 ---------------------------------------
+// import BookingCard from '@/app/components/BookingCard';
+// import { DeleteAlert } from '@/app/components/DeleteAlert';
+// import { EditModal } from '@/app/components/EditModal';
+// import { Button } from '@heroui/react';
+// import Image from 'next/image';
+// import React from 'react';
+// import { BiEdit } from 'react-icons/bi';
+// import { FaRegCalendar } from 'react-icons/fa';
+// import { FiExternalLink } from 'react-icons/fi';
+// import { LuMapPin } from 'react-icons/lu';
+
+// const DestinationDetailsPage = async ({ params }) => {
+//     const { id } = await params
+//     //API Calling for details display
+//     const res = await fetch(`http://localhost:5000/destination/${id}`)
+//     const destination = await res.json()
+//     //-----------------------------------
+
+//     const { imageUrl, price, destinationName, duration, country, description } = destination;
+
+//     return (
+
+//         <div className="max-w-7xl mx-auto">
+
+//             <div className="flex items-center gap-3 justify-end mt-5 mb-3">
+//                 <EditModal destination={destination} />
+
+//                 <DeleteAlert destination={destination} />
+//             </div>
+
+//             <Image className="" alt={destinationName} src={imageUrl} height={600} width={600} />
+//             {/* (2)st */}
+//             {/* <div className='p-2'>
+//                 <div className="flex items-center gap-1">
+//                     <LuMapPin /><span>{country}</span>
+//                 </div>
+//                 <div className="flex justify-between">
+//                     <div>
+//                         <div>
+//                             <h2 className="text-xl font-bold">{destinationName}</h2>
+//                         </div>
+//                         <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
+//                         </div>
+//                     </div>
+//                     <div>
+//                         <h3 className="text-2xl font-bold">${price}</h3>
+//                     </div>
+
+                    
+
+//                 </div>
+            
+//                 <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
+//                 <p>{description}</p>
+                
+//             </div> */}
+//             {/* (2)en */}
+
+//             {/* (3)st copy (2) inside it */}
+//             <div className="flex justify-between">
+//                 <div className='p-2'>
+//                     <div className="flex items-center gap-1">
+//                         <LuMapPin /><span>{country}</span>
+//                     </div>
+//                     <div className="flex justify-between">
+//                         <div>
+//                             <div>
+//                                 <h2 className="text-xl font-bold">{destinationName}</h2>
+//                             </div>
+//                             <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
+//                             </div>
+//                         </div>
+//                         {/* <div>
+//                             <h3 className="text-2xl font-bold">${price}</h3>
+//                         </div> */}
+//                     </div>
+
+//                     <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
+//                     <p>{description}</p>
+
+//                 </div>
+//                 {/* <BookingCard /> */}
+//                 {/* (5) then go to BookingCard */}
+//                 <BookingCard destination={destination} />
+//             </div>
+//             {/* (3)en then go to BookingCard */}
+
+//         </div>
+//     );
+// };
+
+// export default DestinationDetailsPage;
+
+// // ---------------------End:53_5-(1) to () --------------------------------
+// // -----------------------------Start: 54_2 ---------------------------------------
+// import BookingCard from '@/app/components/BookingCard';
+// import { DeleteAlert } from '@/app/components/DeleteAlert';
+// import { EditModal } from '@/app/components/EditModal';
+// import { Button } from '@heroui/react';
+// import Image from 'next/image';
+// import React from 'react';
+// import { BiEdit } from 'react-icons/bi';
+// import { FaRegCalendar } from 'react-icons/fa';
+// import { FiExternalLink } from 'react-icons/fi';
+// import { LuMapPin } from 'react-icons/lu';
+
+// const DestinationDetailsPage = async ({ params }) => {
+//     const { id } = await params
+//     //API Calling for details display
+//     // const res = await fetch(`http://localhost:5000/destination/${id}`)
+//     // (1)st
+//     const res = await fetch(`http://localhost:5000/destination/${id}`, {
+//         headers: {
+//             authorization: "logged in"
+//         }
+//     });
+//     // (1)en then go to server
+//     const destination = await res.json()
+//     //-----------------------------------
+
+//     const { imageUrl, price, destinationName, duration, country, description } = destination;
+
+//     return (
+
+//         <div className="max-w-7xl mx-auto">
+
+//             <div className="flex items-center gap-3 justify-end mt-5 mb-3">
+//                 <EditModal destination={destination} />
+
+//                 <DeleteAlert destination={destination} />
+//             </div>
+
+//             <Image className="" alt={destinationName} src={imageUrl} height={600} width={600} />
+            
+//             <div className="flex justify-between">
+//                 <div className='p-2'>
+//                     <div className="flex items-center gap-1">
+//                         <LuMapPin /><span>{country}</span>
+//                     </div>
+//                     <div className="flex justify-between">
+//                         <div>
+//                             <div>
+//                                 <h2 className="text-xl font-bold">{destinationName}</h2>
+//                             </div>
+//                             <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
+//                             </div>
+//                         </div>
+                        
+//                     </div>
+
+//                     <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
+//                     <p>{description}</p>
+
+//                 </div>
+                
+//                 <BookingCard destination={destination} />
+//             </div>
+            
+
+//         </div>
+//     );
+// };
+
+// export default DestinationDetailsPage;
+
+// // ---------------------End:54_2-(1) to () --------------------------------
+// -----------------------------Start: 54_4 ---------------------------------------
 import BookingCard from '@/app/components/BookingCard';
 import { DeleteAlert } from '@/app/components/DeleteAlert';
 import { EditModal } from '@/app/components/EditModal';
+import { auth } from '@/lib/auth';
 import { Button } from '@heroui/react';
+import { headers } from 'next/headers';
 import Image from 'next/image';
 import React from 'react';
 import { BiEdit } from 'react-icons/bi';
@@ -223,8 +392,23 @@ import { LuMapPin } from 'react-icons/lu';
 
 const DestinationDetailsPage = async ({ params }) => {
     const { id } = await params
-    //API Calling for details display
-    const res = await fetch(`http://localhost:5000/destination/${id}`)
+    // (4)st
+    // const token = await auth.api.getToken({
+    // (5)
+    const {token} = await auth.api.getToken({
+        headers: await headers()
+    })
+    // console.log(token)
+    // (4)en
+    //API Calling for details display    
+    const res = await fetch(`http://localhost:5000/destination/${id}`, {
+        headers: {
+            // authorization: "logged in"
+            // (6) then go to server     
+            authorization: `Bearer ${token}`      
+        }
+    });
+    
     const destination = await res.json()
     //-----------------------------------
 
@@ -241,34 +425,7 @@ const DestinationDetailsPage = async ({ params }) => {
             </div>
 
             <Image className="" alt={destinationName} src={imageUrl} height={600} width={600} />
-            {/* (2)st */}
-            {/* <div className='p-2'>
-                <div className="flex items-center gap-1">
-                    <LuMapPin /><span>{country}</span>
-                </div>
-                <div className="flex justify-between">
-                    <div>
-                        <div>
-                            <h2 className="text-xl font-bold">{destinationName}</h2>
-                        </div>
-                        <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
-                        </div>
-                    </div>
-                    <div>
-                        <h3 className="text-2xl font-bold">${price}</h3>
-                    </div>
-
-                    
-
-                </div>
             
-                <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
-                <p>{description}</p>
-                
-            </div> */}
-            {/* (2)en */}
-
-            {/* (3)st copy (2) inside it */}
             <div className="flex justify-between">
                 <div className='p-2'>
                     <div className="flex items-center gap-1">
@@ -282,20 +439,17 @@ const DestinationDetailsPage = async ({ params }) => {
                             <div className="flex gap-1 items-center"><FaRegCalendar />{duration}
                             </div>
                         </div>
-                        {/* <div>
-                            <h3 className="text-2xl font-bold">${price}</h3>
-                        </div> */}
+                        
                     </div>
 
                     <h1 className="mt-10, text-2xl, font-bold">Overview</h1>
                     <p>{description}</p>
 
                 </div>
-                {/* <BookingCard /> */}
-                {/* (5) then go to BookingCard */}
+                
                 <BookingCard destination={destination} />
             </div>
-            {/* (3)en then go to BookingCard */}
+            
 
         </div>
     );
@@ -303,4 +457,4 @@ const DestinationDetailsPage = async ({ params }) => {
 
 export default DestinationDetailsPage;
 
-// ---------------------End:53_5-(1) to () --------------------------------
+// ---------------------End:54_4-(1) to () --------------------------------

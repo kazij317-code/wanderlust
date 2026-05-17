@@ -37,12 +37,45 @@
 // });
 // // (3)en then go to .env file
 // // ---------------------End:53_1-(1) to () --------------------------------
-// -----------------------------Start: 53_4---------------------------------------
+// // -----------------------------Start: 53_4---------------------------------------
+
+// //import it as betterauth documentation
+// import { betterAuth } from "better-auth";
+// import { MongoClient } from "mongodb";
+// import { mongodbAdapter } from "better-auth/adapters/mongodb";
+
+// const client = new MongoClient(process.env.MONGODB_URI);
+// console.log("MONGO:", process.env.MONGODB_URI);
+
+// await client.connect()//optional add
+// const db = client.db("wanderlust");
+
+// export const auth = betterAuth({
+//   database: mongodbAdapter(db, {
+
+//     client
+//   }),
+
+//     emailAndPassword: {
+//         enabled: true,
+//     },
+
+//     // (4)st import it as betterauth documentation
+//     socialProviders: {        
+//       google: {             
+//         clientId: process.env.GOOGLE_CLIENT_ID,             clientSecret: process.env.GOOGLE_SECRET         
+//       },     
+//     },
+//     // (4)en then go to signup page.
+// });
+// // ---------------------End:53_4-(1) to () --------------------------------
+// -----------------------------Start: 54_4---------------------------------------
 
 //import it as betterauth documentation
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
+import { jwt } from "better-auth/plugins";
 
 const client = new MongoClient(process.env.MONGODB_URI);
 console.log("MONGO:", process.env.MONGODB_URI);
@@ -60,12 +93,27 @@ export const auth = betterAuth({
         enabled: true,
     },
 
-    // (4)st import it as betterauth documentation
+    // import it as betterauth documentation
     socialProviders: {        
       google: {             
         clientId: process.env.GOOGLE_CLIENT_ID,             clientSecret: process.env.GOOGLE_SECRET         
-      },     
+      }     
     },
-    // (4)en then go to signup page.
+    // (2)st
+    session : {
+      cookieCache: {
+        enabled: true,
+        strategy: "jwt",
+        // max 7days
+        maxAge: 7 * 24 * 60 * 60
+      }
+      
+    },
+    // (2)en then go to auth-client.js
+    // (1)st
+    plugins: [
+      jwt()
+    ]
+    // (1)en
 });
-// ---------------------End:53_4-(1) to () --------------------------------
+// ---------------------End:54_4-(1) to () --------------------------------
